@@ -56,10 +56,27 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  function handleWaitlist(e: React.FormEvent) {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleWaitlist(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError("エラーが発生しました。もう一度お試しください。");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -260,11 +277,12 @@ export default function Home() {
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ width: "100%", padding: "18px 24px", background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, color: "#f0f0f0", fontSize: 15, outline: "none", boxSizing: "border-box" }}
               />
-              <button type="submit" style={{ width: "100%", background: "#c8ff00", color: "#0c0c0c", fontWeight: 900, fontSize: 16, padding: "18px", borderRadius: 12, border: "none", cursor: "pointer", letterSpacing: "-0.3px" }}>
-                先行登録する →
+              <button type="submit" disabled={loading} style={{ width: "100%", background: "#c8ff00", color: "#0c0c0c", fontWeight: 900, fontSize: 16, padding: "18px", borderRadius: 12, border: "none", cursor: loading ? "not-allowed" : "pointer", letterSpacing: "-0.3px", opacity: loading ? 0.7 : 1 }}>
+                {loading ? "登録中..." : "先行登録する →"}
               </button>
             </form>
           )}
+          {error && <p style={{ color: "#ff6b6b", fontSize: 13, marginTop: 12 }}>{error}</p>}
           <p style={{ color: "#333", fontSize: 11, marginTop: 24 }}>スパムメールは送りません。いつでも解除できます。</p>
         </div>
       </section>
