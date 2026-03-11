@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
     // 登録確認メールを送信（ドメイン認証後に有効になる）
     await resend.emails.send({
-      from: 'ShortsAI <onboarding@resend.dev>',
+      from: 'ShortsAI <noreply@shortsai.net>',
       to: email,
       subject: '【ShortsAI】先行登録を受け付けました',
       html: `
