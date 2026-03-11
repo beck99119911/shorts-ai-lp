@@ -5,7 +5,7 @@ import { useState } from "react";
 const steps = [
   { num: "01", title: "写真を選ぶ", desc: "今日撮った写真でいい。何枚でも。順番はあとで変えられる。", icon: "📸" },
   { num: "02", title: "テーマを一言", desc: "「旅行」「新商品」でいい。省略してもいい。あとはAIがやる。", icon: "⚡" },
-  { num: "03", title: "投稿する", desc: "ナレーション・字幕・動画が自動で完成。そのままTikTokに上げるだけ。", icon: "🚀" },
+  { num: "03", title: "投稿する", desc: "ナレーション・字幕・動画が自動で完成。TikTok・YouTube Shorts・Reelsにそのまま投稿できる。", icon: "🚀" },
 ];
 
 const pains = [
