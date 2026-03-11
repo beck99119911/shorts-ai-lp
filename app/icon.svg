@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="8" fill="#0c0c0c"/>
+  <!-- Phone frame (9:16 short video shape) -->
+  <rect x="9" y="5" width="14" height="22" rx="3" fill="#1a1a1a" stroke="#c8ff00" stroke-width="1.5"/>
+  <!-- Play triangle -->
+  <polygon points="13.5,12 13.5,20 21,16" fill="#c8ff00"/>
+</svg>
