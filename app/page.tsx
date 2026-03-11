@@ -30,7 +30,7 @@ const plans = [
     name: "FREE",
     price: "¥0",
     period: "",
-    limit: "月5本",
+    limit: "月3セット",
     cta: "無料で試す",
     highlight: false,
   },
@@ -38,7 +38,7 @@ const plans = [
     name: "STD",
     price: "¥680",
     period: "/月",
-    limit: "月30本",
+    limit: "月20セット",
     cta: "始める",
     highlight: true,
   },
@@ -208,7 +208,30 @@ export default function Home() {
           <h2 style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 900, lineHeight: 1.2, marginBottom: 16, textAlign: "center", letterSpacing: "-1px" }}>
             シンプルな料金
           </h2>
-          <p style={{ color: "#555", fontSize: 14, textAlign: "center", marginBottom: 48 }}>β版期間中は全プラン無料</p>
+          <p style={{ color: "#555", fontSize: 14, textAlign: "center", marginBottom: 32 }}>β版期間中は全プラン無料</p>
+
+          {/* 1セットとは？ */}
+          <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 16, padding: "24px 28px", marginBottom: 40 }}>
+            <p style={{ color: "#c8ff00", fontWeight: 700, fontSize: 12, letterSpacing: 2, marginBottom: 16 }}>1セットとは？</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 0, flexWrap: "wrap", justifyContent: "center" }}>
+              {[
+                { icon: "📸", label: "写真をまとめて\nアップロード", sub: "これが1セット" },
+                { icon: "→", label: "", sub: "" },
+                { icon: "🔄", label: "テンプレート・BGMを\n変えて何度でも生成", sub: "追加消費なし" },
+                { icon: "→", label: "", sub: "" },
+                { icon: "🎬", label: "お気に入りの動画を\nそのまま投稿", sub: "" },
+              ].map((item, i) => (
+                item.icon === "→"
+                  ? <span key={i} style={{ color: "#333", fontSize: 24, margin: "0 8px" }}>→</span>
+                  : <div key={i} style={{ textAlign: "center", padding: "0 12px" }}>
+                      <div style={{ fontSize: 32, marginBottom: 8 }}>{item.icon}</div>
+                      <p style={{ fontSize: 12, color: "#aaa", lineHeight: 1.6, whiteSpace: "pre-line" }}>{item.label}</p>
+                      {item.sub && <p style={{ fontSize: 11, color: "#c8ff00", fontWeight: 700, marginTop: 4 }}>{item.sub}</p>}
+                    </div>
+              ))}
+            </div>
+          </div>
+
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
             {plans.map((p) => (
               <div key={p.name} style={{
