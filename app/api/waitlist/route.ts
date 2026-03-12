@@ -2,6 +2,18 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
 const AUDIENCE_ID = '02f95d86-7821-4425-9f35-356041327e3a';
+export const WAITLIST_LIMIT = 100;
+
+export async function GET() {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  try {
+    const result = await resend.contacts.list({ audienceId: AUDIENCE_ID });
+    const count = result.data?.data?.length ?? 0;
+    return NextResponse.json({ count, limit: WAITLIST_LIMIT, remaining: Math.max(0, WAITLIST_LIMIT - count) });
+  } catch {
+    return NextResponse.json({ count: 0, limit: WAITLIST_LIMIT, remaining: WAITLIST_LIMIT });
+  }
+}
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json();

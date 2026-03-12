@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const steps = [
   { num: "01", title: "写真を選ぶ", desc: "今日撮った写真でいい。何枚でも。順番はあとで変えられる。", icon: "📸" },
@@ -55,9 +55,13 @@ const plans = [
 export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [remaining, setRemaining] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('/api/waitlist').then(r => r.json()).then(d => setRemaining(d.remaining)).catch(() => {});
+  }, []);
 
   async function handleWaitlist(e: React.FormEvent) {
     e.preventDefault();
@@ -72,6 +76,7 @@ export default function Home() {
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
+      fetch('/api/waitlist').then(r => r.json()).then(d => setRemaining(d.remaining)).catch(() => {});
     } catch {
       setError("エラーが発生しました。もう一度お試しください。");
     } finally {
@@ -97,7 +102,7 @@ export default function Home() {
       {/* ヒーロー */}
       <section style={{ paddingTop: 140, paddingBottom: 100, paddingLeft: 24, paddingRight: 24, textAlign: "center", borderBottom: "1px solid #1e1e1e" }}>
         <div style={{ display: "inline-block", background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: 999, padding: "6px 16px", fontSize: 12, color: "#c8ff00", fontWeight: 700, marginBottom: 32, letterSpacing: 1 }}>
-          β版 近日公開 — 先行登録受付中
+          β版 先行登録受付中 — 先着100名{remaining !== null ? `（残り${remaining}名）` : ""}
         </div>
 
         <h1 style={{ fontSize: "clamp(40px, 8vw, 80px)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 32, maxWidth: 800, margin: "0 auto 32px" }}>
@@ -280,10 +285,17 @@ export default function Home() {
           <h2 style={{ fontSize: "clamp(32px, 5vw, 60px)", fontWeight: 900, lineHeight: 1.1, marginBottom: 24, letterSpacing: "-2px" }}>
             今日撮った写真が、<br /><span style={{ color: "#c8ff00" }}>今夜投稿できる。</span>
           </h2>
-          <p style={{ color: "#555", fontSize: 15, marginBottom: 48, lineHeight: 1.7 }}>
+          <p style={{ color: "#555", fontSize: 15, marginBottom: 32, lineHeight: 1.7 }}>
             β版の先行登録で、公開時に真っ先にお知らせします。<br />
             登録者限定で初月無料クーポンをプレゼント予定。
           </p>
+          {remaining !== null && (
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#111", border: "1px solid #2a2a2a", borderRadius: 999, padding: "8px 20px", marginBottom: 32, fontSize: 13 }}>
+              <span style={{ color: "#555" }}>先着100名限定</span>
+              <span style={{ width: 1, height: 12, background: "#2a2a2a" }} />
+              <span style={{ color: "#f0f0f0", fontWeight: 900 }}>残り<span style={{ color: "#c8ff00", fontSize: 18 }}>{remaining}</span>名</span>
+            </div>
+          )}
           {submitted ? (
             <div style={{ background: "#111f00", border: "1px solid #3a5000", borderRadius: 16, padding: 48 }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
