@@ -2,7 +2,7 @@ export default function Tokusho() {
   const rows = [
     { label: "販売業者", value: "茂木正之" },
     { label: "代表者", value: "茂木正之" },
-    { label: "所在地", value: "千葉県松戸市新松戸" },
+    { label: "所在地", value: "千葉県松戸市新松戸3-209" },
     { label: "電話番号", value: "メールにてお問い合わせください（公開請求があれば遅滞なく開示します）" },
     { label: "メールアドレス", value: "shortsai@outlook.jp" },
     { label: "サービス名", value: "ShortsAI" },
