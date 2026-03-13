@@ -40,7 +40,7 @@ export default function Privacy() {
           },
           {
             title: "7. お問い合わせ",
-            body: "プライバシーに関するお問い合わせは以下までお願いします。\nメール: support@shortsai.net",
+            body: "プライバシーに関するお問い合わせは以下までお願いします。\nメール: shortsai@outlook.jp",
           },
         ].map((sec) => (
           <div key={sec.title} style={{ marginBottom: 40 }}>

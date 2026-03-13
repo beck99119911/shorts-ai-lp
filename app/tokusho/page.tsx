@@ -1,10 +1,10 @@
 export default function Tokusho() {
   const rows = [
-    { label: "販売業者", value: "[記載予定]" },
-    { label: "代表者", value: "[記載予定]" },
-    { label: "所在地", value: "[記載予定]" },
+    { label: "販売業者", value: "茂木正之" },
+    { label: "代表者", value: "茂木正之" },
+    { label: "所在地", value: "千葉県松戸市新松戸" },
     { label: "電話番号", value: "メールにてお問い合わせください（公開請求があれば遅滞なく開示します）" },
-    { label: "メールアドレス", value: "support@shortsai.net" },
+    { label: "メールアドレス", value: "shortsai@outlook.jp" },
     { label: "サービス名", value: "ShortsAI" },
     { label: "サービスURL", value: "https://shortsai.net" },
     { label: "販売価格", value: "FREE: ¥0 / STD: ¥680（税込）/月 / PRO: ¥1,480（税込）/月\n※β版期間中は全プラン無料" },
