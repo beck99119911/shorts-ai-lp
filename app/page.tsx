@@ -323,10 +323,15 @@ export default function Home() {
       </section>
 
       {/* フッター */}
-      <footer style={{ padding: "32px 24px", textAlign: "center", borderTop: "1px solid #1e1e1e" }}>
-        <p style={{ fontWeight: 900, fontSize: 16, marginBottom: 8 }}>
+      <footer style={{ padding: "40px 24px", textAlign: "center", borderTop: "1px solid #1e1e1e" }}>
+        <p style={{ fontWeight: 900, fontSize: 16, marginBottom: 16 }}>
           <span style={{ color: "#c8ff00" }}>Shorts</span>AI
         </p>
+        <div style={{ display: "flex", justifyContent: "center", gap: 24, marginBottom: 20 }}>
+          <a href="/terms" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>利用規約</a>
+          <a href="/privacy" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>プライバシーポリシー</a>
+          <a href="/tokusho" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>特定商取引法</a>
+        </div>
         <p style={{ color: "#333", fontSize: 12 }}>© 2026 ShortsAI. All rights reserved.</p>
       </footer>
     </main>
