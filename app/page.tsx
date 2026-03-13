@@ -331,6 +331,7 @@ export default function Home() {
           <a href="/terms" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>利用規約</a>
           <a href="/privacy" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>プライバシーポリシー</a>
           <a href="/tokusho" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>特定商取引法</a>
+          <a href="mailto:shortsai@outlook.jp" style={{ color: "#444", fontSize: 12, textDecoration: "none" }}>お問い合わせ</a>
         </div>
         <p style={{ color: "#333", fontSize: 12 }}>© 2026 ShortsAI. All rights reserved.</p>
       </footer>
