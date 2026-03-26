@@ -1,7 +1,7 @@
 export default function Tokusho() {
   const rows = [
-    { label: "販売業者", value: "masayuki" },
-    { label: "代表者", value: "masayuki" },
+    { label: "販売業者", value: "Beck Works" },
+    { label: "代表者", value: "請求があった場合、遅滞なく開示します。" },
     { label: "所在地", value: "請求があった場合、遅滞なく開示します。" },
     { label: "電話番号", value: "請求があった場合、遅滞なく開示します。" },
     { label: "メールアドレス", value: "shortsai@outlook.jp" },
